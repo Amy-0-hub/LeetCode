@@ -8,12 +8,12 @@ class Solution:
             if numbers[ptr_read] != numbers[ptr_read - 1]:
                 numbers[ptr_write] = numbers[ptr_read]
                 ptr_write += 1
-        
+
         return ptr_write
 
-    
     def function_1(self) -> None:
         pass
+
 
 numbers_1 = [1, 2, 3, 3, 4, 5, 6]
 
