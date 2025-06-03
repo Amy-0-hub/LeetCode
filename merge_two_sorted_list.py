@@ -11,40 +11,51 @@ from typing import Optional
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:       
-        head1=list1
-        head2=list2
-        if head1 is None:     
-            return head2   
-        if head2 is None:     
+        head1 = list1
+        head2 = list2
+        if head1 is None:
+            return head2
+        if head2 is None:
             return head1
         
-        pointer1 = head1 
-        pointer2 = head2 
+        pointer1 = head1
+        pointer2 = head2
         result = None   
 
         if head1.val <= head2.val:
-            result = head1
-            head1=head1.next
-          
+            result = head1 
         else:
             result = head2
-            head2=head2.next
             
-            
-
+        previous_node = None
         while (pointer1 is not None) and (pointer2 is not None):
-            if pointer1.val <= pointer2.val: 
-                store = pointer1.next 
-                pointer1.next=pointer2   
-                pointer1=store
-                         
-            else:              
-                store = pointer2.next  
+            if pointer1.val == 4 and pointer2.val == 4:
+                print("here")
+            if pointer1.val <= pointer2.val:
+                store = pointer1.next
                 
-                pointer2.next =pointer1
+                if pointer1.next is not None and pointer1.next.val <= pointer2.val:
+                    # pointer1.next.next = pointer2
+                    pass
+                else:
+                    pointer1.next = pointer2
+                
+                previous_node = pointer1
+                pointer1 = store
+                         
+            else:
+                store = pointer2.next
+                
+                if pointer2.next is not None and pointer2.next.val <= pointer1.val:
+                    # pointer2.next.next = pointer1
+                    pass
+                else:
+                    pointer1.next = pointer2
+                
+                previous_node = pointer2
                 pointer2 = store
         
-                           
+
         return result
         
           
@@ -62,13 +73,13 @@ node13 =ListNode(4,None)
 node12=ListNode(3,node13)
 node11=ListNode(1,node12)
 
-head1=node11
+head2=node11
 
 
 node23=ListNode(4, None)
 node22=ListNode(2,node23)
-node21=ListNode(1,node22)
-head2=node21
+node21=ListNode(1.5,node22)
+head1=node21
         
 e1=Solution()
 r1=e1.mergeTwoLists(head1, head2)
