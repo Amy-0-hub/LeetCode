@@ -1,5 +1,6 @@
 class Solution:
     def fib(self, n: int) -> int:
+        # given n, return the n'th number in fibonaccio series
         if n == 0:
             return 0
         if n == 1:

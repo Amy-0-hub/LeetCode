@@ -1,0 +1,10 @@
+import pandas as pd
+
+def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
+    count_emails = person['email'].value_counts()
+    # print(count_emails)
+    dupli_emails = []
+    for value, count in count_emails.items():
+        if count > 1:
+            dupli_emails.append(value)
+    return pd.DataFrame({'Email': dupli_emails})
